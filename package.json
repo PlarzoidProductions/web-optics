@@ -4,9 +4,13 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --prod",
-    "test": "ng test",
+    "start": "ng serve --port 5000 --host 0.0.0.0",
+    "standardize": "prettier **/*.ts --write",
+    "build": "npm run standardize && ng build",
+    "build:prod": "npm run standardize && ng build --prod",
+    "test": "ng test --browsers Chrome",
+    "test:debug": "npm test --browsers Chrome --sourcemaps=false",
+    "test:once": "ng test --browsers Chrome -s",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -40,9 +44,17 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "prettier": "^1.11.1",
     "protractor": "~5.1.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"
+  },
+  "prettier": {
+    "printWidth": 90,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "parser": "typescript"
   }
 }
