@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core'
+import { FlexLayoutModule } from '@angular/flex-layout'
 import { BrowserModule } from '@angular/platform-browser'
 import { RouterModule } from '@angular/router'
 
@@ -21,6 +22,7 @@ import { TournamentModule } from './tournament/tournament.module'
     OpenPlayModule,
     TournamentModule,
     RouterModule.forRoot([]),
+    FlexLayoutModule,
   ],
   providers: [PlayerService, PrizeService, GameSystemsService],
   bootstrap: [AppComponent],
