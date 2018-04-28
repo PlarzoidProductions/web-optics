@@ -5,7 +5,9 @@ import { RouterModule } from '@angular/router'
 
 import { AdminModule } from './admin/admin.module'
 import { AppComponent } from './app.component'
+import { HeaderComponent } from './header/header.component'
 import { LoginComponent } from './login/login.component'
+import { NavComponent } from './nav/nav.component'
 import { OpenPlayModule } from './open-play/open-play.module'
 import { PlayerModule } from './player/player.module'
 import { GameSystemsService } from './services/game-systems.service'
@@ -14,7 +16,7 @@ import { PrizeService } from './services/prize.service'
 import { TournamentModule } from './tournament/tournament.module'
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent, HeaderComponent, NavComponent],
   imports: [
     AdminModule,
     BrowserModule,

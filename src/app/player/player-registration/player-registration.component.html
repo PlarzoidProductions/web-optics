@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayoutAlign="space-around center">
+<div fxLayout="column" fxLayoutAlign="center center">
   <form [formGroup]="registrationFormGroup">
     <div fxFlex fxLayout="column" fxLayoutAlign="center start">
       <label fxFlex for="player-registration-first-name">First Name:</label>
@@ -9,7 +9,7 @@
       <label fxFlex for="player-registration-last-name">Last Name:</label>
       <input fxFlex name="lastName" type="text" formControlName="lastNameInput" id="player-registration-last-name" required aria-required="true">
     </div>
-    <button fxFlex="grow" type="submit" name="submit-registration" id="registration-submit" value="submit" (click)="onRegister()"
+    <button fxFlex fxFill type="submit" name="submit-registration" id="registration-submit" value="submit" (click)="onRegister()"
       [disabled]="!registrationFormGroup.valid">Register Player</button>
   </form>
 </div>

@@ -1,7 +1,16 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <router-outlet></router-outlet>
+<div fxLayout="column" fxLayoutAlign="center space-between" fxFlexFill>
+  <div fxFlex>
+    <app-header [version]="version" [title]="title"></app-header>
+  </div>
+  <div fxFlex fxLayout="row" fxFlexAlign="start stetch">
+    <div fxFlex="10">
+      <app-nav></app-nav>
+    </div>
+    <div fxFlex>
+
+      <body>
+        <router-outlet></router-outlet>
+      </body>
+    </div>
+  </div>
 </div>
