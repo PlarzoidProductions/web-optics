@@ -1,13 +1,13 @@
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 
 export interface Player {
-  id: string
+  id?: string
   firstName: string
   lastName: string
 }
 
 export interface IPlayerService {
-  playerList: BehaviorSubject<Player[]>
+  playerListBehaviorSubject: BehaviorSubject<Player[]>
 
   updatePlayerList(): void
 

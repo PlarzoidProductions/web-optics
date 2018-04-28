@@ -1,4 +1,5 @@
 import { Injectable, OnInit } from '@angular/core'
+
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 import { Observable } from 'rxjs/Observable'
 
@@ -8,17 +9,22 @@ import { IPlayerService, Player } from './player.interface'
 
 @Injectable()
 export class PlayerService implements IPlayerService, OnInit {
-  playerList: BehaviorSubject<Player[]>
+  playerListBehaviorSubject: BehaviorSubject<Player[]> = new BehaviorSubject<Player[]>([])
 
   constructor() {}
 
-  ngOnInit() {
-    this.playerList = new BehaviorSubject<Player[]>([])
-  }
+  ngOnInit() {}
 
   public updatePlayerList(): void {}
 
   public async registerPlayer(newPlayer: Player): Promise<Player> {
-    return await Observable.of(newPlayer).toPromise()
+    const updatedPlayerList = this.playerListBehaviorSubject.getValue()
+    const newPlayerId = updatedPlayerList.push(newPlayer)
+    this.playerListBehaviorSubject.next(updatedPlayerList)
+
+    return await Observable.of({
+      ...newPlayer,
+      id: String(newPlayerId),
+    } as Player).toPromise()
   }
 }
