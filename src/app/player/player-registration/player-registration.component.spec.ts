@@ -1,5 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing'
+import { FlexLayoutModule } from '@angular/flex-layout'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
+import { PlayerService } from '../../services/player.service'
 import { PlayerRegistrationComponent } from './player-registration.component'
 
 describe('PlayerRegistrationComponent', () => {
@@ -8,6 +11,8 @@ describe('PlayerRegistrationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [FormsModule, ReactiveFormsModule, FlexLayoutModule],
+      providers: [PlayerService],
       declarations: [PlayerRegistrationComponent],
     }).compileComponents()
   }))

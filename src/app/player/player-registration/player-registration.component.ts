@@ -1,36 +1,67 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+
+import { Subscription } from 'rxjs/Subscription'
+
+import { Player } from '../../services/player.interface'
+import { PlayerService } from '../../services/player.service'
 
 @Component({
   selector: 'app-player-registration',
   templateUrl: './player-registration.component.html',
   styleUrls: ['./player-registration.component.css'],
 })
-export class PlayerRegistrationComponent implements OnInit {
+export class PlayerRegistrationComponent implements OnInit, OnDestroy {
   registrationFormGroup: FormGroup
 
-  constructor() {}
+  clearStatusSubscription: Subscription
+
+  successMessage: string
+  errorMessage: string
+
+  constructor(private playerService: PlayerService) {}
 
   ngOnInit() {
     this.registrationFormGroup = this.buildForm()
+    this.clearStatusSubscription = this.registrationFormGroup.valueChanges.subscribe(
+      change => {
+        this.resetStatus()
+      }
+    )
+  }
+
+  ngOnDestroy() {
+    this.clearStatusSubscription.unsubscribe()
   }
 
   private buildForm(): FormGroup {
     return new FormBuilder().group({
-      firstNameInput: ['', Validators.required],
-      lastNameInput: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
     })
   }
 
   onRegister() {
-    console.log(`Let's register ${this.firstName} ${this.lastName}`)
+    this.playerService
+      .registerPlayer(this.registrationFormGroup.value as Player)
+      .then(player => this.handleSuccess(player))
+      .catch(error => this.displayError(error))
   }
 
-  get firstName(): string {
-    return this.registrationFormGroup.get('firstNameInput').value
+  private handleSuccess(player: Player): void {
+    this.registrationFormGroup.reset()
+
+    this.successMessage = `Successfully registered ${player.firstName} ${
+      player.lastName
+    } as Player #${player.id}!`
   }
 
-  get lastName(): string {
-    return this.registrationFormGroup.get('lastNameInput').value
+  private displayError(error: Error): void {
+    this.errorMessage = error.message
+  }
+
+  private resetStatus(): void {
+    this.successMessage = null
+    this.errorMessage = null
   }
 }
