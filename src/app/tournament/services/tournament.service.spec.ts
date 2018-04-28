@@ -1,15 +1,18 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing'
 
-import { TournamentService } from './tournament.service';
+import { TournamentService } from './tournament.service'
 
 describe('TournamentService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [TournamentService]
-    });
-  });
+      providers: [TournamentService],
+    })
+  })
 
-  it('should be created', inject([TournamentService], (service: TournamentService) => {
-    expect(service).toBeTruthy();
-  }));
-});
+  it(
+    'should be created',
+    inject([TournamentService], (service: TournamentService) => {
+      expect(service).toBeTruthy()
+    })
+  )
+})

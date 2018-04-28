@@ -1,15 +1,18 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing'
 
-import { MatchmakingService } from './matchmaking.service';
+import { MatchmakingService } from './matchmaking.service'
 
 describe('MatchmakingService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [MatchmakingService]
-    });
-  });
+      providers: [MatchmakingService],
+    })
+  })
 
-  it('should be created', inject([MatchmakingService], (service: MatchmakingService) => {
-    expect(service).toBeTruthy();
-  }));
-});
+  it(
+    'should be created',
+    inject([MatchmakingService], (service: MatchmakingService) => {
+      expect(service).toBeTruthy()
+    })
+  )
+})

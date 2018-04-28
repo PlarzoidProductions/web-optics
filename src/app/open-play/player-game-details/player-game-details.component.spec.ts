@@ -1,25 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { PlayerGameDetailsComponent } from './player-game-details.component';
+import { PlayerGameDetailsComponent } from './player-game-details.component'
 
 describe('PlayerGameDetailsComponent', () => {
-  let component: PlayerGameDetailsComponent;
-  let fixture: ComponentFixture<PlayerGameDetailsComponent>;
+  let component: PlayerGameDetailsComponent
+  let fixture: ComponentFixture<PlayerGameDetailsComponent>
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlayerGameDetailsComponent ]
-    })
-    .compileComponents();
-  }));
+      declarations: [PlayerGameDetailsComponent],
+    }).compileComponents()
+  }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PlayerGameDetailsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(PlayerGameDetailsComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

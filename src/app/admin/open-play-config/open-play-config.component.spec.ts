@@ -1,25 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { OpenPlayConfigComponent } from './open-play-config.component';
+import { OpenPlayConfigComponent } from './open-play-config.component'
 
 describe('OpenPlayConfigComponent', () => {
-  let component: OpenPlayConfigComponent;
-  let fixture: ComponentFixture<OpenPlayConfigComponent>;
+  let component: OpenPlayConfigComponent
+  let fixture: ComponentFixture<OpenPlayConfigComponent>
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OpenPlayConfigComponent ]
-    })
-    .compileComponents();
-  }));
+      declarations: [OpenPlayConfigComponent],
+    }).compileComponents()
+  }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OpenPlayConfigComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(OpenPlayConfigComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

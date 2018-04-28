@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'app-pairings',
   templateUrl: './pairings.component.html',
-  styleUrls: ['./pairings.component.css']
+  styleUrls: ['./pairings.component.css'],
 })
 export class PairingsComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

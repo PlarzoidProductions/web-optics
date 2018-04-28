@@ -1,13 +1,13 @@
-import { TournamentModule } from './tournament.module';
+import { TournamentModule } from './tournament.module'
 
 describe('TournamentModule', () => {
-  let tournamentModule: TournamentModule;
+  let tournamentModule: TournamentModule
 
   beforeEach(() => {
-    tournamentModule = new TournamentModule();
-  });
+    tournamentModule = new TournamentModule()
+  })
 
   it('should create an instance', () => {
-    expect(tournamentModule).toBeTruthy();
-  });
-});
+    expect(tournamentModule).toBeTruthy()
+  })
+})

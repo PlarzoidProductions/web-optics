@@ -1,15 +1,18 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing'
 
-import { OpenPlayService } from './open-play.service';
+import { OpenPlayService } from './open-play.service'
 
 describe('OpenPlayService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [OpenPlayService]
-    });
-  });
+      providers: [OpenPlayService],
+    })
+  })
 
-  it('should be created', inject([OpenPlayService], (service: OpenPlayService) => {
-    expect(service).toBeTruthy();
-  }));
-});
+  it(
+    'should be created',
+    inject([OpenPlayService], (service: OpenPlayService) => {
+      expect(service).toBeTruthy()
+    })
+  )
+})

@@ -8,19 +8,17 @@ import { IPlayerService, Player } from './player.interface'
 
 @Injectable()
 export class PlayerService implements IPlayerService, OnInit {
-
   playerList: BehaviorSubject<Player[]>
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.playerList = new BehaviorSubject<Player[]>([])
   }
 
-  public updatePlayerList(): void { }
+  public updatePlayerList(): void {}
 
   public async registerPlayer(newPlayer: Player): Promise<Player> {
     return await Observable.of(newPlayer).toPromise()
   }
-
 }

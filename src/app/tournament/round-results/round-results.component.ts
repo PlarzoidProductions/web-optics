@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 
 @Component({
   selector: 'app-round-results',
   templateUrl: './round-results.component.html',
-  styleUrls: ['./round-results.component.css']
+  styleUrls: ['./round-results.component.css'],
 })
 export class RoundResultsComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
