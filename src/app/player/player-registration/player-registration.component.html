@@ -1,3 +1,25 @@
-<p>
-  player-registration works!
-</p>
+<form [formGroup]="registrationFormGroup">
+  <div class="form">
+    <table>
+      <tr>
+        <td class="label">
+          <label for="player-registration-first-name">First Name:</label>
+        </td>
+        <td>
+          <input name="firstName" type="text" formControlName="firstNameInput" id="player-registration-first-name">
+        </td>
+      </tr>
+      <tr>
+        <td class="label">
+          <label for="player-registration-last-name">Last Name:</label>
+        </td>
+        <td>
+          <input name="lastName" type="text" formControlName="lastNameInput" id="player-registration-last-name">
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="submit-button">
+    <button type="submit" name="submit-registration" id="registration-submit" value="submit" (click)="onRegister()">Register Player</button>
+  </div>
+</form>
