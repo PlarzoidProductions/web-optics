@@ -54,6 +54,7 @@ export class PlayerRegistrationComponent implements OnInit, OnDestroy {
     this.successMessage = `Successfully registered ${player.firstName} ${
       player.lastName
     } as Player #${player.id}!`
+    setTimeout(() => this.resetStatus(), 5000)
   }
 
   private displayError(error: Error): void {
