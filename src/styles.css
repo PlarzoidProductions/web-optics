@@ -3,26 +3,39 @@
 @import '~primeng/resources/themes/darkness/theme.css';
 @import '~primeng/resources/primeng.min.css';
 
-
 .error-message {
-  color: darkred;
-  font-weight: bold
+  background-color: rgb(223, 115, 121);
+  border-left: 10px solid darkred;
+  text-align: center;
+  vertical-align: center;
+  font-weight: bold;
+  font-size: x-large;
+  padding: 10px;
 }
 
 .success-message {
-  color: darkgreen;
-  font-weight: bold
+  background-color: rgb(156, 224, 156);
+  border-left: 10px solid darkgreen;
+  text-align: center;
+  vertical-align: center;
+  font-weight: bold;
+  font-size: x-large;
+  padding: 10px;
 }
 
 .input-container {
   margin-top: 10px;
 }
 
-span.inline-error-text {
-  font-size: small;
+input.input-error {
+  border: 2px solid darkred;
 }
 
 div.inline-error-container {
   text-align: end;
   color: darkred;
+}
+
+span.inline-error-text {
+  font-size: small;
 }

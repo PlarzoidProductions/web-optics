@@ -2,7 +2,8 @@
   <form [formGroup]="registrationFormGroup">
     <div class="input-container" fxFlex fxLayout="column" fxLayoutAlign="center start">
       <label fxFlex for="player-registration-first-name">First Name:</label>
-      <input fxFlex name="firstName" type="text" formControlName="firstName" id="player-registration-first-name" required aria-required="true">
+      <input fxFlex name="firstName" type="text" formControlName="firstName" [ngClass]="{'input-error': firstNameField.touched && firstNameField.invalid}"
+        id="player-registration-first-name" required aria-required="true">
       <div fxFlex fxFlexFill *ngIf="firstNameField.touched && firstNameField.invalid" class="inline-error-container">
         <i class="fa fa-exclamation-triangle"></i>
         <span *ngIf="firstNameField.hasError('required')" class="inline-error-text">Required</span>
@@ -10,7 +11,8 @@
     </div>
     <div class="input-container " fxFlex fxLayout="column" fxLayoutAlign="center start">
       <label fxFlex for="player-registration-last-name">Last Name:</label>
-      <input fxFlex name="lastName" type="text" formControlName="lastName" id="player-registration-last-name" required aria-required="true ">
+      <input fxFlex name="lastName" type="text" formControlName="lastName" [ngClass]="{'input-error': lastNameField.touched && lastNameField.invalid}"
+        id="player-registration-last-name" required aria-required="true ">
       <div fxFlex fxFlexFill *ngIf="lastNameField.touched && lastNameField.invalid" class="inline-error-container">
         <i class="fa fa-exclamation-triangle"></i>
         <span *ngIf="lastNameField.hasError('required')" class="inline-error-text">Required</span>
@@ -19,6 +21,12 @@
     <button fxFlex fxFill type="submit" name="submit-registration" id="registration-submit" value="submit
       " (click)="onRegister()" [disabled]="!registrationFormGroup.valid">Register Player</button>
   </form>
-  <div fxFlex *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
-  <div fxFlex *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+</div>
+<div fxLayout="column" fxLayoutAlign="start center">
+  <div fxFlex *ngIf="successMessage" class="success-message">
+    <i class="fa fa-check-circle"></i> {{ successMessage }}
+  </div>
+  <div fxFlex *ngIf="errorMessage" class="error-message">
+    <i class="fa fa-times-circle"></i> {{ errorMessage }}
+  </div>
 </div>
