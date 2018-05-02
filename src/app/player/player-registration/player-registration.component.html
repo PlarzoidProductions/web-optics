@@ -1,17 +1,24 @@
 <div fxLayout="column" fxLayoutAlign="center center">
   <form [formGroup]="registrationFormGroup">
-    <div fxFlex fxLayout="column" fxLayoutAlign="center start">
+    <div class="input-container" fxFlex fxLayout="column" fxLayoutAlign="center start">
       <label fxFlex for="player-registration-first-name">First Name:</label>
-      <input fxFlex name="firstName" type="text" formControlName="firstName" id="player-registration-first-name" required
-        aria-required="true">
+      <input fxFlex name="firstName" type="text" formControlName="firstName" id="player-registration-first-name" required aria-required="true">
+      <div fxFlex fxFlexFill *ngIf="firstNameField.touched && firstNameField.invalid" class="inline-error-container">
+        <i class="fa fa-exclamation-triangle"></i>
+        <span *ngIf="firstNameField.hasError('required')" class="inline-error-text">Required</span>
+      </div>
     </div>
-    <div fxFlex fxLayout="column" fxLayoutAlign="center start">
+    <div class="input-container " fxFlex fxLayout="column" fxLayoutAlign="center start">
       <label fxFlex for="player-registration-last-name">Last Name:</label>
-      <input fxFlex name="lastName" type="text" formControlName="lastName" id="player-registration-last-name" required aria-required="true">
+      <input fxFlex name="lastName" type="text" formControlName="lastName" id="player-registration-last-name" required aria-required="true ">
+      <div fxFlex fxFlexFill *ngIf="lastNameField.touched && lastNameField.invalid" class="inline-error-container">
+        <i class="fa fa-exclamation-triangle"></i>
+        <span *ngIf="lastNameField.hasError('required')" class="inline-error-text">Required</span>
+      </div>
     </div>
-    <button fxFlex fxFill type="submit" name="submit-registration" id="registration-submit" value="submit" (click)="onRegister()"
-      [disabled]="!registrationFormGroup.valid">Register Player</button>
+    <button fxFlex fxFill type="submit" name="submit-registration" id="registration-submit" value="submit
+      " (click)="onRegister()" [disabled]="!registrationFormGroup.valid">Register Player</button>
   </form>
-  <div fxFlex *ngIf="successMessage" class="success-message"> {{ successMessage }}</div>
-  <div fxFlex *ngIf="errorMessage" class="error-message"> {{ errorMessage }}</div>
+  <div fxFlex *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+  <div fxFlex *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 </div>

@@ -1,10 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~font-awesome/css/font-awesome.css';
+@import '~primeng/resources/themes/darkness/theme.css';
+@import '~primeng/resources/primeng.min.css';
+
+
 .error-message {
-  color: dark-red;
+  color: darkred;
   font-weight: bold
 }
 
 .success-message {
   color: darkgreen;
   font-weight: bold
+}
+
+.input-container {
+  margin-top: 10px;
+}
+
+span.inline-error-text {
+  font-size: small;
+}
+
+div.inline-error-container {
+  text-align: end;
+  color: darkred;
 }

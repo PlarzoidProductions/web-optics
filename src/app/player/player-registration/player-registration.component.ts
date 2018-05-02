@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 import { Subscription } from 'rxjs/Subscription'
 
@@ -63,5 +63,12 @@ export class PlayerRegistrationComponent implements OnInit, OnDestroy {
   private resetStatus(): void {
     this.successMessage = null
     this.errorMessage = null
+  }
+
+  get firstNameField(): AbstractControl {
+    return this.registrationFormGroup.get('firstName')
+  }
+  get lastNameField(): AbstractControl {
+    return this.registrationFormGroup.get('lastName')
   }
 }
