@@ -38,6 +38,9 @@ export class PlayerRegistrationComponent implements OnInit, OnDestroy {
     return new FormBuilder().group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
+      badgeId: [''],
+      vip: [false],
+      clubId: [''],
     })
   }
 
@@ -71,5 +74,14 @@ export class PlayerRegistrationComponent implements OnInit, OnDestroy {
   }
   get lastNameField(): AbstractControl {
     return this.registrationFormGroup.get('lastName')
+  }
+  get badgeIdField(): AbstractControl {
+    return this.registrationFormGroup.get('badgeId')
+  }
+  get vipCheckbox(): AbstractControl {
+    return this.registrationFormGroup.get('vip')
+  }
+  get clubIdField(): AbstractControl {
+    return this.registrationFormGroup.get('clubId')
   }
 }

@@ -1,22 +1,51 @@
 <div fxLayout="column" fxLayoutAlign="center center">
   <form [formGroup]="registrationFormGroup">
-    <div class="input-container" fxFlex fxLayout="column" fxLayoutAlign="center start">
-      <label fxFlex for="player-registration-first-name">First Name:</label>
-      <input fxFlex name="firstName" type="text" formControlName="firstName" [ngClass]="{'input-error': firstNameField.touched && firstNameField.invalid}"
-        id="player-registration-first-name" required aria-required="true">
-      <div fxFlex fxFlexFill *ngIf="firstNameField.touched && firstNameField.invalid" class="inline-error-container">
-        <i class="fa fa-exclamation-triangle"></i>
-        <span *ngIf="firstNameField.hasError('required')" class="inline-error-text">Required</span>
+    <span fxFlex class="section-title">Player Name:</span>
+    <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" fxLayoutGap="20px">
+      <div class="input-container" fxFlex="1 1 calc(50 - 10px)" fxLayout="column" fxLayoutAlign="center start">
+        <label fxFlex for="player-registration-first-name">First:</label>
+        <input fxFlex name="firstName" type="text" formControlName="firstName" [ngClass]="{'input-error': firstNameField.touched && firstNameField.invalid}"
+          id="player-registration-first-name" required aria-required="true">
+        <div fxFlex class="inline-error-container">
+          <div *ngIf="firstNameField.touched && firstNameField.hasError('required')">
+            <i class="fa fa-exclamation-triangle"></i>
+            <span *ngIf="firstNameField.hasError('required')" class="inline-error-text">Required</span>
+          </div>
+        </div>
+      </div>
+      <div class="input-container" fxFlex="1 1 calc(50 - 10px)" fxLayout="column" fxLayoutAlign="center start">
+        <label fxFlex for="player-registration-last-name">Last:</label>
+        <input fxFlex name="lastName" type="text" formControlName="lastName" [ngClass]="{'input-error': lastNameField.touched && lastNameField.invalid}"
+          id="player-registration-last-name" required aria-required="true ">
+        <div fxFlex class="inline-error-container">
+          <div *ngIf="lastNameField.touched && lastNameField.hasError('required')" class="inline-error-container">
+            <i class="fa fa-exclamation-triangle"></i>
+            <span *ngIf="lastNameField.hasError('required')" class="inline-error-text">Required</span>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="input-container " fxFlex fxLayout="column" fxLayoutAlign="center start">
-      <label fxFlex for="player-registration-last-name">Last Name:</label>
-      <input fxFlex name="lastName" type="text" formControlName="lastName" [ngClass]="{'input-error': lastNameField.touched && lastNameField.invalid}"
-        id="player-registration-last-name" required aria-required="true ">
-      <div fxFlex fxFlexFill *ngIf="lastNameField.touched && lastNameField.invalid" class="inline-error-container">
-        <i class="fa fa-exclamation-triangle"></i>
-        <span *ngIf="lastNameField.hasError('required')" class="inline-error-text">Required</span>
+    <span fxFlex class="section-title">Player Credentials:</span>
+    <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between stretch" fxLayoutGap="20px">
+      <div class="input-container" fxFlex="1 1 calc(50 - 10px)" fxLayout="column" fxLayoutAlign="center start">
+        <label fxFlex for="player-registration-badge-id">Badge ID#:</label>
+        <input fxFlex name="badgeId" type="text" formControlName="badgeId" [ngClass]="{'input-error': badgeIdField.touched && badgeIdField.invalid}"
+          id="player-registration-badge-id">
       </div>
+      <div class="input-container" fxFlex="1 1 calc(50 - 10px)" fxLayout="column" fxLayoutAlign="center start">
+        <label fxFlex for="player-registration-vip-status">VIP Status:</label>
+        <select fxFlex fxFill name="vip" formControlName="vip" [ngClass]="{'input-error': vipCheckbox.touched && vipCheckbox.invalid}"
+          id="player-registration-vip-status">
+          <option value="null" selected="selected">None</option>
+          <option value="true">Yes, player is a VIP</option>
+        </select>
+      </div>
+    </div>
+    <span fxFlex class="section-title">Player Associations:</span>
+    <div class="input-container" fxFlex="1 2 100" fxFlexFill fxLayout="column" fxLayoutAlign="center stretch">
+      <label fxFlex for="player-registration-club-id">Club Name:</label>
+      <input fxFlex name="clubId" type="text" formControlName="clubId" [ngClass]="{'input-error': clubIdField.touched && clubIdField.invalid}"
+        id="player-registration-club-id">
     </div>
     <button fxFlex fxFill type="submit" name="submit-registration" id="registration-submit" value="submit
       " (click)="onRegister()" [disabled]="!registrationFormGroup.valid">Register Player</button>

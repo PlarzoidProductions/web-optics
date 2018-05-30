@@ -23,6 +23,11 @@
   padding: 10px;
 }
 
+.section-title {
+  font-size: larger;
+  font-weight: bold;
+}
+
 .input-container {
   margin-top: 10px;
 }
@@ -34,8 +39,11 @@ input.input-error {
 div.inline-error-container {
   text-align: end;
   color: darkred;
+  height: 0px !important;
+  margin-bottom: 20px !important;
 }
 
 span.inline-error-text {
   font-size: small;
+  height: 0px;
 }
