@@ -36,8 +36,8 @@ export class PlayerRegistrationComponent implements OnInit, OnDestroy {
 
   private buildForm(): FormGroup {
     return new FormBuilder().group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstName: ['', [Validators.required, Validators.minLength(2)]],
+      lastName: ['', [Validators.required, Validators.minLength(2)]],
       badgeId: [''],
       vip: [false],
       clubId: [''],

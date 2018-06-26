@@ -3,6 +3,10 @@
 @import '~primeng/resources/themes/darkness/theme.css';
 @import '~primeng/resources/primeng.min.css';
 
+div.form-container {
+  width: 60%;
+}
+
 .error-message {
   background-color: rgb(223, 115, 121);
   border-left: 10px solid darkred;
@@ -30,6 +34,7 @@
 
 .input-container {
   margin-top: 10px;
+  margin-bottom: 20px !important;
 }
 
 input.input-error {
@@ -37,10 +42,8 @@ input.input-error {
 }
 
 div.inline-error-container {
-  text-align: end;
   color: darkred;
   height: 0px !important;
-  margin-bottom: 20px !important;
 }
 
 span.inline-error-text {
