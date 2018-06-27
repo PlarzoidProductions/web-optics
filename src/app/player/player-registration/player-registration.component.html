@@ -49,11 +49,4 @@
     </div>
   </div>
 </form>
-<div fxLayout="column" fxLayoutAlign="start center">
-  <div fxFlex *ngIf="successMessage" class="success-message">
-    <i class="fa fa-check-circle"></i> {{ successMessage }}
-  </div>
-  <div fxFlex *ngIf="errorMessage" class="error-message">
-    <i class="fa fa-times-circle"></i> {{ errorMessage }}
-  </div>
-</div>
+<app-action-status></app-action-status>

@@ -7,6 +7,16 @@ div.form-container {
   width: 60%;
 }
 
+.pending-message {
+  background-color: lightgrey;
+  border-left: 10px solid darkslategrey;
+  text-align: center;
+  vertical-align: center;
+  font-weight: bold;
+  font-size: x-large;
+  padding: 10px;
+}
+
 .error-message {
   background-color: rgb(223, 115, 121);
   border-left: 10px solid darkred;

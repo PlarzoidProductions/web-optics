@@ -1,8 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core'
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core'
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 import { Subscription } from 'rxjs/Subscription'
 
+import {
+  ActionStatusComponent,
+} from '../../controls/action-status/action-status.component'
 import { Player } from '../../services/player.interface'
 import { PlayerService } from '../../services/player.service'
 
@@ -14,19 +17,15 @@ import { PlayerService } from '../../services/player.service'
 export class PlayerRegistrationComponent implements OnInit, OnDestroy {
   registrationFormGroup: FormGroup
 
+  @ViewChild(ActionStatusComponent) status: ActionStatusComponent
   clearStatusSubscription: Subscription
-
-  successMessage: string
-  errorMessage: string
 
   constructor(private playerService: PlayerService) {}
 
   ngOnInit() {
     this.registrationFormGroup = this.buildForm()
-    this.clearStatusSubscription = this.registrationFormGroup.valueChanges.subscribe(
-      change => {
-        this.resetStatus()
-      }
+    this.clearStatusSubscription = this.registrationFormGroup.valueChanges.subscribe(() =>
+      this.status.reset()
     )
   }
 
@@ -45,6 +44,7 @@ export class PlayerRegistrationComponent implements OnInit, OnDestroy {
   }
 
   onRegister() {
+    this.status.notifyPending('Attempting to register...')
     this.playerService
       .registerPlayer(this.registrationFormGroup.value as Player)
       .then(player => this.handleSuccess(player))
@@ -53,20 +53,17 @@ export class PlayerRegistrationComponent implements OnInit, OnDestroy {
 
   private handleSuccess(player: Player): void {
     this.registrationFormGroup.reset()
+    this.status.notifySuccess(this.buildSuccessMessage(player))
+  }
 
-    this.successMessage = `Successfully registered ${player.firstName} ${
-      player.lastName
-    } as Player #${player.id}!`
-    setTimeout(() => this.resetStatus(), 5000)
+  private buildSuccessMessage(player: Player): string {
+    return `Successfully registered ${player.firstName} ${player.lastName} as Player #${
+      player.id
+    }!`
   }
 
   private displayError(error: Error): void {
-    this.errorMessage = error.message
-  }
-
-  private resetStatus(): void {
-    this.successMessage = null
-    this.errorMessage = null
+    this.status.notifyFailure(error.message)
   }
 
   get firstNameField(): AbstractControl {
