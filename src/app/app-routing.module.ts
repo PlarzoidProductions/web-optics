@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
-import { PlayerModule } from './player/player.module'
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 
 const routes: Routes = [
-  { path: '', redirectTo: '/player', pathMatch: 'full' },
-  { path: '/player', loadChildren: () => PlayerModule },
+  { path: '', redirectTo: 'player/register', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent },
 ]
 
 @NgModule({

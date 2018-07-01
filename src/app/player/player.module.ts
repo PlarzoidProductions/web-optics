@@ -13,11 +13,11 @@ import { RedeemPrizeComponent } from './redeem-prize/redeem-prize.component'
 @NgModule({
   imports: [
     CommonModule,
-    PlayerRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
     OpticsControlsModule,
+    PlayerRoutingModule,
   ],
   declarations: [PlayerRegistrationComponent, RedeemPrizeComponent],
 })

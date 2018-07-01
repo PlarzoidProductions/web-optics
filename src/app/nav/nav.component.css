@@ -1,0 +1,42 @@
+nav {
+  border-right: solid 1px black;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-right: 5px;
+}
+
+ul.inner {
+  padding-left: 10px;
+  margin-left: 10px;
+}
+
+nav a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  text-decoration-line: none;
+}
+
+nav a:visited, a:link {
+  background: white;
+  color: black;
+}
+
+nav a.parent.active {
+  background: lightslategray;
+  color: black;
+}
+
+nav a.active {
+  background: black;
+  color: white;
+}
+
+nav a.hover {
+  background: grey;
+  color: black;
+}

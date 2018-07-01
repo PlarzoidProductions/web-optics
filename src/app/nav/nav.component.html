@@ -1,6 +1,68 @@
-<ul fxLayout="column" fxLayoutAlign="center start">
-  <li fxFlex>Player</li>
-  <li fxFlex>Open-Play</li>
-  <li fxFlex>Tournaments</li>
-  <li fxFlex>Prizes</li>
-</ul>
+<nav>
+  <ul class="outer">
+    <li>
+      <a class="parent" routerLink="/player" routerLinkActive="active">Player</a>
+      <ul class="inner" *ngIf="router.url.startsWith('/player')">
+        <li>
+          <a routerLink="/player/register" routerLinkActive="active">Register</a>
+        </li>
+        <li>
+          <a routerLink="/player/redeem" routerLinkActive="active">Redeem Points</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a class="parent" routerLink="/open-play" routerLinkActive="active">Open-Play</a>
+      <ul class="inner" *ngIf="router.url.startsWith('/open-play')">
+        <li>
+          <a routerLink="/open-play/report-game" routerLinkActive="active">Report Game</a>
+        </li>
+        <li>
+          <a routerLink="/open-play/lfg" routerLinkActive="active">LFG</a>
+        </li>
+        <li>
+          <a routerLink="/open-play/player-record" routerLinkActive="active">Player Record</a>
+        </li>
+        <li>
+          <a routerLink="/open-play/leaderboard" routerLinkActive="active">Leaderboard</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a class="parent" routerLink="/tournament" routerLinkActive="active">Tournaments</a>
+      <ul class="inner" *ngIf="router.url.startsWith('/tournament')">
+        <li>
+          <a routerLink="/tournament/list" routerLinkActive="active">List</a>
+        </li>
+        <li>
+          <a routerLink="/tournament/manage" routerLinkActive="active">Manage</a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a class="parent" routerLink="/admin" routerLinkActive="active">Admin</a>
+      <ul class="inner" *ngIf="router.url.startsWith('/admin')">
+        <li>
+          <a routerLink="/admin/users" routerLinkActive="active">Users</a>
+        </li>
+        <li>
+          <a class="parent" routerLink="/admin/config" routerLinkActive="active">Config</a>
+          <ul class="inner" *ngIf="router.url.startsWith('/admin/config')">
+            <li>
+              <a routerLink="/admin/config/open-play" routerLinkActive="active">Open Play</a>
+            </li>
+            <li>
+              <a routerLink="/admin/config/tournaments" routerLinkActive="active">Touraments</a>
+            </li>
+            <li>
+              <a routerLink="/admin/config/prizes" routerLinkActive="active">Prizes</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a routerLink="/admin/statistics" routerLinkActive="active">Statistics</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
