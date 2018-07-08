@@ -5,11 +5,19 @@ import { Observable } from 'rxjs/Observable'
 
 import 'rxjs/add/observable/of'
 
-import { IPlayerService, Player } from './player.interface'
+import { Player } from '../player/models/player.model'
+
+export interface IPlayerService {
+  playerList: BehaviorSubject<Player[]>
+
+  updatePlayerList(): void
+
+  registerPlayer(newPlayer: Player): Observable<Player>
+}
 
 @Injectable()
 export class PlayerService implements IPlayerService, OnInit {
-  playerListBehaviorSubject: BehaviorSubject<Player[]> = new BehaviorSubject<Player[]>([])
+  playerList: BehaviorSubject<Player[]> = new BehaviorSubject<Player[]>([])
 
   constructor() {}
 
@@ -17,14 +25,17 @@ export class PlayerService implements IPlayerService, OnInit {
 
   public updatePlayerList(): void {}
 
-  public async registerPlayer(newPlayer: Player): Promise<Player> {
-    const updatedPlayerList = this.playerListBehaviorSubject.getValue()
-    const newPlayerId = updatedPlayerList.push(newPlayer)
-    this.playerListBehaviorSubject.next(updatedPlayerList)
+  public registerPlayer(newPlayer: Player): Observable<Player> {
+    const updatedPlayerList = this.playerList.getValue()
 
-    return await Observable.of({
+    // Fake adding to a database
+    const storedPlayer: Player = new Player().fromJSON({
       ...newPlayer,
-      id: String(newPlayerId),
-    } as Player).toPromise()
+      id: String(updatedPlayerList.length),
+    })
+    updatedPlayerList.push(storedPlayer)
+    this.playerList.next(updatedPlayerList)
+
+    return Observable.of(storedPlayer)
   }
 }

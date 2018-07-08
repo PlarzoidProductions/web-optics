@@ -40,9 +40,9 @@
       </div>
       <span fxFlex class="section-title">Player Associations:</span>
       <div class="input-container" fxFlex="1 2 100" fxLayout="column" fxLayoutAlign="center stretch">
-        <label fxFlex for="player-registration-club-id">Club Name:</label>
-        <input fxFlex name="clubId" type="text" formControlName="clubId" [ngClass]="{'input-error': clubIdField.touched && clubIdField.invalid}"
-          id="player-registration-club-id">
+        <label fxFlex for="player-registration-club">Club Name:</label>
+        <input fxFlex name="club" type="text" formControlName="club" [ngClass]="{'input-error': clubField.touched && clubField.invalid}"
+          id="player-registration-club">
       </div>
       <button fxFlex fxFlexAlign="end" type="submit" name="submit-registration" id="registration-submit" value="submit
       " (click)="onRegister()" [disabled]="!registrationFormGroup.valid">Register Player</button>

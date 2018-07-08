@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs/Subscription'
 import {
   ActionStatusComponent,
 } from '../../controls/action-status/action-status.component'
-import { Player } from '../../services/player.interface'
+import { Player } from '../../player/models/player.model'
 import { PlayerService } from '../../services/player.service'
 
 @Component({
@@ -39,7 +39,7 @@ export class PlayerRegistrationComponent implements OnInit, OnDestroy {
       lastName: ['', [Validators.required, Validators.minLength(2)]],
       badgeId: [''],
       vip: [false],
-      clubId: [''],
+      club: [''],
     })
   }
 
@@ -47,8 +47,7 @@ export class PlayerRegistrationComponent implements OnInit, OnDestroy {
     this.status.notifyPending('Attempting to register...')
     this.playerService
       .registerPlayer(this.registrationFormGroup.value as Player)
-      .then(player => this.handleSuccess(player))
-      .catch(error => this.displayError(error))
+      .subscribe(player => this.handleSuccess(player), error => this.displayError(error))
   }
 
   private handleSuccess(player: Player): void {
@@ -57,9 +56,9 @@ export class PlayerRegistrationComponent implements OnInit, OnDestroy {
   }
 
   private buildSuccessMessage(player: Player): string {
-    return `Successfully registered ${player.firstName} ${player.lastName} as Player #${
-      player.id
-    }!`
+    return `Successfully registered ${player.firstName} ${
+      player.lastName
+    } as Player #${player.getId()}!`
   }
 
   private displayError(error: Error): void {
@@ -78,7 +77,7 @@ export class PlayerRegistrationComponent implements OnInit, OnDestroy {
   get vipCheckbox(): AbstractControl {
     return this.registrationFormGroup.get('vip')
   }
-  get clubIdField(): AbstractControl {
-    return this.registrationFormGroup.get('clubId')
+  get clubField(): AbstractControl {
+    return this.registrationFormGroup.get('club')
   }
 }
