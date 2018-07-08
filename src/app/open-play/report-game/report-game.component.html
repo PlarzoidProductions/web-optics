@@ -1,3 +1,9 @@
-<p>
-  report-game works!
-</p>
+<h3>Open Play Game Report</h3>
+<div fxLayout="column" fxLayoutAlign="start stretch">
+  <div *ngFor="let playerDetail of playerDetails">
+    <app-player-details></app-player-details>
+  </div>
+  <div fxAlign="end">
+    <button (click)="onAddPlayer()">Add Player</button>
+  </div>
+</div>

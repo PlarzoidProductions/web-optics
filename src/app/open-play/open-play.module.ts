@@ -14,7 +14,8 @@ import {
 import { ReportGameComponent } from './report-game/report-game.component'
 import { AchievementsService } from './services/achievements.service'
 import { MatchmakingService } from './services/matchmaking.service'
-import { OpenPlayService } from './services/open-play.service'
+import { OpenPlayService } from './services/open-play.service';
+import { PlayerDetailsComponent } from './report-game/player-details/player-details.component'
 
 @NgModule({
   imports: [CommonModule, OpenPlayRoutingModule],
@@ -25,6 +26,7 @@ import { OpenPlayService } from './services/open-play.service'
     ViewPlayerRecordComponent,
     LeaderboardComponent,
     PlayerRecordComponent,
+    PlayerDetailsComponent,
   ],
   providers: [MatchmakingService, OpenPlayService, AchievementsService],
 })
