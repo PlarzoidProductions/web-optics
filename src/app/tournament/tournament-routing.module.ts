@@ -20,9 +20,9 @@ import {
 import { TournamentListComponent } from './tournament-list/tournament-list.component'
 
 const routes: Routes = [
-  { path: 'tournament/list', component: TournamentListComponent },
+  { path: 'list', component: TournamentListComponent },
   {
-    path: 'tournament/manage',
+    path: 'manage',
     component: ManageTournamentComponent,
     children: [
       {
@@ -37,7 +37,7 @@ const routes: Routes = [
       },
     ],
   },
-  { path: 'tournament', redirectTo: 'tournament/list', pathMatch: 'full' },
+  { path: '', redirectTo: 'list', pathMatch: 'full' },
 ]
 
 @NgModule({

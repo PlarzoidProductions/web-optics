@@ -10,13 +10,13 @@ import {
 } from './tournament-config/tournament-config.component'
 
 const routes: Routes = [
-  { path: 'admin/users', component: ManageUsersComponent },
-  { path: 'admin/config/open-play', component: OpenPlayConfigComponent },
-  { path: 'admin/config/prizes', component: PrizesConfigComponent },
-  { path: 'admin/config/tournaments', component: TournamentConfigComponent },
-  { path: 'admin/statistics', component: StatisticsComponent },
-  { path: 'admin/config', redirectTo: 'admin/config/open-play', pathMatch: 'full' },
-  { path: 'admin', redirectTo: 'admin/statistics', pathMatch: 'full' },
+  { path: 'users', component: ManageUsersComponent },
+  { path: 'config/open-play', component: OpenPlayConfigComponent },
+  { path: 'config/prizes', component: PrizesConfigComponent },
+  { path: 'config/tournaments', component: TournamentConfigComponent },
+  { path: 'statistics', component: StatisticsComponent },
+  { path: 'config', redirectTo: 'config/open-play', pathMatch: 'full' },
+  { path: '', redirectTo: 'admin/statistics', pathMatch: 'full' },
 ]
 
 @NgModule({

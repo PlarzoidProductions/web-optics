@@ -13,18 +13,18 @@ import {
 import { ReportGameComponent } from './report-game/report-game.component'
 
 const routes: Routes = [
-  { path: 'open-play/lfg', component: LfgComponent },
-  { path: 'open-play/report-game', component: ReportGameComponent },
+  { path: 'lfg', component: LfgComponent },
+  { path: 'report-game', component: ReportGameComponent },
   {
-    path: 'open-play/player-record',
+    path: 'player-record',
     component: PlayerRecordComponent,
     children: [
-      { path: 'open-play/player-record/view', component: ViewPlayerRecordComponent },
-      { path: 'open-play/player-record/game/:id', component: PlayerGameDetailsComponent },
+      { path: 'player-record/:id', component: ViewPlayerRecordComponent },
+      { path: 'player-record/:id/game', component: PlayerGameDetailsComponent },
     ],
   },
-  { path: 'open-play/leaderboard', component: LeaderboardComponent },
-  { path: 'open-play', redirectTo: 'open-play/report-game', pathMatch: 'full' },
+  { path: 'leaderboard', component: LeaderboardComponent },
+  { path: '', redirectTo: 'report-game', pathMatch: 'full' },
 ]
 
 @NgModule({

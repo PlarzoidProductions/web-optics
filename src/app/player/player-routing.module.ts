@@ -7,9 +7,9 @@ import {
 import { RedeemPrizeComponent } from './redeem-prize/redeem-prize.component'
 
 const routes: Routes = [
-  { path: 'player/register', component: PlayerRegistrationComponent },
-  { path: 'player/redeem', component: RedeemPrizeComponent },
-  { path: 'player', redirectTo: 'player/register', pathMatch: 'full' },
+  { path: 'register', component: PlayerRegistrationComponent },
+  { path: 'redeem', component: RedeemPrizeComponent },
+  { path: '', redirectTo: 'register', pathMatch: 'full' },
 ]
 
 @NgModule({
