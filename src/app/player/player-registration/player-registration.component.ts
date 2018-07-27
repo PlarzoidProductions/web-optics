@@ -1,10 +1,11 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core'
+import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core'
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 
-import { Subscription } from 'rxjs/Subscription'
+import { Subscription } from 'rxjs'
 
 import {
-  ActionStatusComponent,
+  ActionStatus,
+  ActionStatusType,
 } from '../../controls/action-status/action-status.component'
 import { Player } from '../../player/models/player.model'
 import { PlayerService } from '../../services/player.service'
@@ -17,7 +18,7 @@ import { PlayerService } from '../../services/player.service'
 export class PlayerRegistrationComponent implements OnInit, OnDestroy {
   registrationFormGroup: FormGroup
 
-  @ViewChild(ActionStatusComponent) status: ActionStatusComponent
+  submitStatus: EventEmitter<ActionStatus> = new EventEmitter<ActionStatus>()
   clearStatusSubscription: Subscription
 
   constructor(private playerService: PlayerService) {}
@@ -25,7 +26,7 @@ export class PlayerRegistrationComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.registrationFormGroup = this.buildForm()
     this.clearStatusSubscription = this.registrationFormGroup.valueChanges.subscribe(() =>
-      this.status.reset()
+      this.submitStatus.emit(null)
     )
   }
 
@@ -44,7 +45,9 @@ export class PlayerRegistrationComponent implements OnInit, OnDestroy {
   }
 
   onRegister() {
-    this.status.notifyPending('Attempting to register...')
+    this.submitStatus.emit(
+      new ActionStatus(ActionStatusType.PENDING, 'Attempting to register...')
+    )
     this.playerService
       .registerPlayer(this.registrationFormGroup.value as Player)
       .subscribe(player => this.handleSuccess(player), error => this.displayError(error))
@@ -52,7 +55,9 @@ export class PlayerRegistrationComponent implements OnInit, OnDestroy {
 
   private handleSuccess(player: Player): void {
     this.registrationFormGroup.reset()
-    this.status.notifySuccess(this.buildSuccessMessage(player))
+    this.submitStatus.emit(
+      new ActionStatus(ActionStatusType.SUCCESS, this.buildSuccessMessage(player))
+    )
   }
 
   private buildSuccessMessage(player: Player): string {
@@ -62,7 +67,7 @@ export class PlayerRegistrationComponent implements OnInit, OnDestroy {
   }
 
   private displayError(error: Error): void {
-    this.status.notifyFailure(error.message)
+    this.submitStatus.emit(new ActionStatus(ActionStatusType.FAILURE, error.message))
   }
 
   get firstNameField(): AbstractControl {
