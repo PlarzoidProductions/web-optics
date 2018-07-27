@@ -34,7 +34,7 @@ export class PlayerRegistrationComponent implements OnInit, OnDestroy {
     this.clearStatusSubscription.unsubscribe()
   }
 
-  private buildForm(): FormGroup {
+  buildForm(): FormGroup {
     return new FormBuilder().group({
       firstName: ['', [Validators.required, Validators.minLength(2)]],
       lastName: ['', [Validators.required, Validators.minLength(2)]],
@@ -53,20 +53,20 @@ export class PlayerRegistrationComponent implements OnInit, OnDestroy {
       .subscribe(player => this.handleSuccess(player), error => this.displayError(error))
   }
 
-  private handleSuccess(player: Player): void {
+  handleSuccess(player: Player): void {
     this.registrationFormGroup.reset()
     this.submitStatus.emit(
       new ActionStatus(ActionStatusType.SUCCESS, this.buildSuccessMessage(player))
     )
   }
 
-  private buildSuccessMessage(player: Player): string {
+  buildSuccessMessage(player: Player): string {
     return `Successfully registered ${player.firstName} ${
       player.lastName
     } as Player #${player.getId()}!`
   }
 
-  private displayError(error: Error): void {
+  displayError(error: Error): void {
     this.submitStatus.emit(new ActionStatus(ActionStatusType.FAILURE, error.message))
   }
 
