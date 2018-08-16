@@ -1,12 +1,16 @@
 import { AbstractItem } from '../../models/base.model'
-import { Club } from './club.model'
+import { Club, IClub } from './club.model'
 
 export interface IPlayer {
   firstName: string
   lastName: string
   badgeId?: string
   vip?: boolean
-  club?: Club
+  club?: IClub
+}
+
+export interface IApiPlayer extends IPlayer {
+  id: string
 }
 
 export class Player extends AbstractItem<IPlayer> implements IPlayer {
@@ -20,14 +24,14 @@ export class Player extends AbstractItem<IPlayer> implements IPlayer {
     super()
   }
 
-  toJSON() {
+  toJSON(): IApiPlayer {
     return {
       id: this.id ? this.id : null,
       firstName: this.firstName,
       lastName: this.lastName,
       badgeId: this.badgeId,
       vip: this.vip,
-      club: this.club ? this.club.toJSON() : null,
+      club: this.club ? this.club : null,
     }
   }
 
@@ -39,6 +43,10 @@ export class Player extends AbstractItem<IPlayer> implements IPlayer {
     this.vip = json.vip ? json.vip : this.vip
     this.club = json.club ? json.club : this.club
 
+    return this
+  }
+
+  fromForm(): Player {
     return this
   }
 }

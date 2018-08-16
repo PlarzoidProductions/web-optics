@@ -5,12 +5,16 @@ export interface IClub {
   description: string
 }
 
+export interface IApiClub extends IClub {
+  id: string
+}
+
 export class Club extends AbstractItem<IClub> implements IClub {
   constructor(public name: string = null, public description: string = null) {
     super()
   }
 
-  toJSON() {
+  toJSON(): IApiClub {
     return {
       id: this.id ? this.id : null,
       name: this.name,
@@ -18,11 +22,15 @@ export class Club extends AbstractItem<IClub> implements IClub {
     }
   }
 
-  fromJSON(json: any): IClub {
+  fromJSON(json: any): Club {
     this.id = json.id ? json.id : null
     this.name = json.name ? json.name : null
     this.description = json.description ? json.description : null
 
+    return this
+  }
+
+  fromForm(): Club {
     return this
   }
 }
