@@ -7,6 +7,7 @@ export abstract class AbstractItem<T> implements Identifiable {
 
   abstract toJSON(): any
   abstract fromJSON(json: any): T
+  abstract fromForm(value: any): T
 
   getId(): string {
     return this.id
