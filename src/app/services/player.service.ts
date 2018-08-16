@@ -1,14 +1,14 @@
-import { Injectable, OnInit } from '@angular/core'
+import { HttpClient } from '@angular/common/http'
+import { Injectable } from '@angular/core'
 
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 import { Observable } from 'rxjs/Observable'
+import { map } from 'rxjs/operators'
 
-import 'rxjs/add/observable/of'
-
-import { Player } from '../player/models/player.model'
+import { IApiPlayer, Player } from '../player/models/player.model'
 
 export interface IPlayerService {
-  playerList: BehaviorSubject<Player[]>
+  playerList: BehaviorSubject<Map<string, Player>>
 
   updatePlayerList(): void
 
@@ -16,26 +16,39 @@ export interface IPlayerService {
 }
 
 @Injectable()
-export class PlayerService implements IPlayerService, OnInit {
-  playerList: BehaviorSubject<Player[]> = new BehaviorSubject<Player[]>([])
+export class PlayerService implements IPlayerService {
+  playerList: BehaviorSubject<Map<string, Player>>
+  private url = 'http://localhost:8080/player/'
 
-  constructor() {}
+  constructor(private http: HttpClient) {
+    this.playerList = new BehaviorSubject<Map<string, Player>>(new Map())
+  }
 
-  ngOnInit() {}
+  public updatePlayerList(): Observable<Map<string, Player>> {
+    const playerMap = new Map<string, Player>()
+    this.http
+      .get<IApiPlayer[]>(this.url)
+      .pipe(
+        map((apiPlayers: IApiPlayer[]) => {
+          return new Map(
+            apiPlayers.map((p): [string, Player] => [p.id, new Player().fromJSON(p)])
+          )
+        })
+      )
+      .subscribe(this.playerList)
 
-  public updatePlayerList(): void {}
+    return this.playerList.asObservable()
+  }
 
   public registerPlayer(newPlayer: Player): Observable<Player> {
-    const updatedPlayerList = this.playerList.getValue()
+    return this.http
+      .post<IApiPlayer>(this.url, newPlayer)
+      .pipe(map(p => new Player().fromJSON(p)))
+  }
 
-    // Fake adding to a database
-    const storedPlayer: Player = new Player().fromJSON({
-      ...newPlayer,
-      id: String(updatedPlayerList.length),
-    })
-    updatedPlayerList.push(storedPlayer)
-    this.playerList.next(updatedPlayerList)
-
-    return Observable.of(storedPlayer)
+  public getPlayerById(id: string): Observable<Player> {
+    return this.http
+      .get<IApiPlayer>(this.url + id)
+      .pipe(map(p => new Player().fromJSON(p)))
   }
 }

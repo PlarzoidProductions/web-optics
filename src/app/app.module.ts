@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core'
 import { FlexLayoutModule } from '@angular/flex-layout'
 import { BrowserModule } from '@angular/platform-browser'
@@ -20,7 +21,7 @@ import { PrizeService } from './services/prize.service'
     NavComponent,
     PageNotFoundComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FlexLayoutModule],
+  imports: [BrowserModule, AppRoutingModule, FlexLayoutModule, HttpClientModule],
   providers: [PlayerService, PrizeService, GameSystemsService],
   bootstrap: [AppComponent],
 })

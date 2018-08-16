@@ -33,7 +33,7 @@
           <label fxFlex for="player-registration-vip-status">VIP Status:</label>
           <select fxFlex fxFill name="vip" formControlName="vip" [ngClass]="{'input-error': vipCheckbox.touched && vipCheckbox.invalid}"
             id="player-registration-vip-status">
-            <option value="null" selected="selected">None</option>
+            <option value="false" selected="selected">No</option>
             <option value="true">Yes, player is a VIP</option>
           </select>
         </div>

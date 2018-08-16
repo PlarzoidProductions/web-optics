@@ -61,9 +61,7 @@ export class PlayerRegistrationComponent implements OnInit, OnDestroy {
   }
 
   buildSuccessMessage(player: Player): string {
-    return `Successfully registered ${player.firstName} ${
-      player.lastName
-    } as Player #${player.getId()}!`
+    return `Successfully registered ${player.firstName} ${player.lastName}!`
   }
 
   displayError(error: Error): void {
