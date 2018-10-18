@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 5000 --host 0.0.0.0",
+    "start": "ng serve --port 5001 --host 0.0.0.0",
     "standardize": "prettier **/*.ts --write",
     "build": "npm run standardize && ng build",
     "build:prod": "ng build --prod",
@@ -30,7 +30,6 @@
     "@angular/router": "^5.2.10",
     "core-js": "^2.5.5",
     "font-awesome": "^4.7.0",
-    "primeng": "^5.2.5",
     "rxjs": "^5.5.10",
     "zone.js": "^0.8.26"
   },
