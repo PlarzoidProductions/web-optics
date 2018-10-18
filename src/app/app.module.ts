@@ -11,7 +11,8 @@ import { NavComponent } from './nav/nav.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 import { GameSystemsService } from './services/game-systems.service'
 import { PlayerService } from './services/player.service'
-import { PrizeService } from './services/prize.service'
+import { PrizeService } from './services/prize.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { PrizeService } from './services/prize.service'
     NavComponent,
     PageNotFoundComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FlexLayoutModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FlexLayoutModule, HttpClientModule, BrowserAnimationsModule],
   providers: [PlayerService, PrizeService, GameSystemsService],
   bootstrap: [AppComponent],
 })
