@@ -7,18 +7,16 @@ describe('MainNavComponent', () => {
   let component: MainNavComponent
   let fixture: ComponentFixture<MainNavComponent>
 
-  beforeEach(
-    fakeAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [MatSidenavModule],
-        declarations: [MainNavComponent],
-      }).compileComponents()
+  beforeEach(fakeAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [MatSidenavModule],
+      declarations: [MainNavComponent],
+    }).compileComponents()
 
-      fixture = TestBed.createComponent(MainNavComponent)
-      component = fixture.componentInstance
-      fixture.detectChanges()
-    })
-  )
+    fixture = TestBed.createComponent(MainNavComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  }))
 
   it('should compile', () => {
     expect(component).toBeTruthy()

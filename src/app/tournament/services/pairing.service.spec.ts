@@ -9,10 +9,7 @@ describe('PairingService', () => {
     })
   })
 
-  it(
-    'should be created',
-    inject([PairingService], (service: PairingService) => {
-      expect(service).toBeTruthy()
-    })
-  )
+  it('should be created', inject([PairingService], (service: PairingService) => {
+    expect(service).toBeTruthy()
+  }))
 })

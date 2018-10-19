@@ -11,7 +11,8 @@ import { map } from 'rxjs/operators'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainNavComponent {
-  @Input() title: string
+  @Input()
+  title: string
 
   activePage: string = 'Active Page'
 

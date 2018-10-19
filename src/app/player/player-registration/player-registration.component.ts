@@ -45,9 +45,7 @@ export class PlayerRegistrationComponent implements OnInit, OnDestroy {
   }
 
   onRegister() {
-    this.submitStatus.emit(
-      new ActionStatus(ActionStatusType.PENDING, 'Attempting to register...')
-    )
+    this.submitStatus.emit(new ActionStatus(ActionStatusType.PENDING, 'Attempting to register...'))
     this.playerService
       .registerPlayer(this.registrationFormGroup.value as Player)
       .subscribe(player => this.handleSuccess(player), error => this.displayError(error))

@@ -35,7 +35,8 @@ export enum ActionStatusType {
   styles: [],
 })
 export class ActionStatusComponent implements OnInit, OnDestroy {
-  @Input() action: Observable<ActionStatus>
+  @Input()
+  action: Observable<ActionStatus>
   private actionSubscription: Subscription
 
   state: ActionStatusType

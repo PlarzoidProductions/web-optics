@@ -29,9 +29,7 @@ export class PlayerService implements IPlayerService {
       .get<IApiPlayer[]>(this.url)
       .pipe(
         map((apiPlayers: IApiPlayer[]) => {
-          return new Map(
-            apiPlayers.map((p): [string, Player] => [p.id, new Player().fromJSON(p)])
-          )
+          return new Map(apiPlayers.map((p): [string, Player] => [p.id, new Player().fromJSON(p)]))
         })
       )
       .subscribe(this.playerList)
@@ -40,14 +38,10 @@ export class PlayerService implements IPlayerService {
   }
 
   public registerPlayer(newPlayer: Player): Observable<Player> {
-    return this.http
-      .post<IApiPlayer>(this.url, newPlayer)
-      .pipe(map(p => new Player().fromJSON(p)))
+    return this.http.post<IApiPlayer>(this.url, newPlayer).pipe(map(p => new Player().fromJSON(p)))
   }
 
   public getPlayerById(id: string): Observable<Player> {
-    return this.http
-      .get<IApiPlayer>(this.url + id)
-      .pipe(map(p => new Player().fromJSON(p)))
+    return this.http.get<IApiPlayer>(this.url + id).pipe(map(p => new Player().fromJSON(p)))
   }
 }

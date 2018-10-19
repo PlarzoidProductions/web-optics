@@ -9,10 +9,7 @@ describe('MatchmakingService', () => {
     })
   })
 
-  it(
-    'should be created',
-    inject([MatchmakingService], (service: MatchmakingService) => {
-      expect(service).toBeTruthy()
-    })
-  )
+  it('should be created', inject([MatchmakingService], (service: MatchmakingService) => {
+    expect(service).toBeTruthy()
+  }))
 })

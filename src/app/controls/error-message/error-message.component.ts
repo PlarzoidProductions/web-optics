@@ -12,9 +12,12 @@ import { AbstractControl } from '@angular/forms'
 })
 export class ErrorMessageComponent implements DoCheck {
   displayError: Boolean = false
-  @Input() control: AbstractControl
-  @Input() causes: string[]
-  @Input() disabledBy: string[] = []
+  @Input()
+  control: AbstractControl
+  @Input()
+  causes: string[]
+  @Input()
+  disabledBy: string[] = []
 
   constructor() {}
 

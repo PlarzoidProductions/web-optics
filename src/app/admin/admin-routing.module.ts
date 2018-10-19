@@ -5,9 +5,7 @@ import { ManageUsersComponent } from './manage-users/manage-users.component'
 import { OpenPlayConfigComponent } from './open-play-config/open-play-config.component'
 import { PrizesConfigComponent } from './prizes-config/prizes-config.component'
 import { StatisticsComponent } from './statistics/statistics.component'
-import {
-  TournamentConfigComponent,
-} from './tournament-config/tournament-config.component'
+import { TournamentConfigComponent } from './tournament-config/tournament-config.component'
 
 const routes: Routes = [
   { path: 'users', component: ManageUsersComponent },

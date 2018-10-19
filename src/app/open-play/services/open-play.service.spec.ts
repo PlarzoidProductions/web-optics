@@ -9,10 +9,7 @@ describe('OpenPlayService', () => {
     })
   })
 
-  it(
-    'should be created',
-    inject([OpenPlayService], (service: OpenPlayService) => {
-      expect(service).toBeTruthy()
-    })
-  )
+  it('should be created', inject([OpenPlayService], (service: OpenPlayService) => {
+    expect(service).toBeTruthy()
+  }))
 })

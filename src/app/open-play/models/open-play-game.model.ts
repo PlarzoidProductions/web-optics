@@ -12,10 +12,7 @@ export interface IApiOpenPlayGame {
 }
 
 export class OpenPlayGame extends AbstractItem<IOpenPlayGame> implements IOpenPlayGame {
-  constructor(
-    public date: Date = null,
-    public playerDetails: Map<string, PlayerDetail> = null
-  ) {
+  constructor(public date: Date = null, public playerDetails: Map<string, PlayerDetail> = null) {
     super()
     this.playerDetails = new Map<string, PlayerDetail>()
   }

@@ -1,16 +1,10 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
-import {
-  PlayerGameDetailsComponent,
-} from './player-record/player-game-details/player-game-details.component'
+import { PlayerGameDetailsComponent } from './player-record/player-game-details/player-game-details.component'
 import { PlayerRecordComponent } from './player-record/player-record.component'
-import {
-  ViewPlayerRecordComponent,
-} from './player-record/view-player-record/view-player-record.component'
-import {
-  PlayerRegistrationComponent,
-} from './player-registration/player-registration.component'
+import { ViewPlayerRecordComponent } from './player-record/view-player-record/view-player-record.component'
+import { PlayerRegistrationComponent } from './player-registration/player-registration.component'
 import { RedeemPrizeComponent } from './redeem-prize/redeem-prize.component'
 
 const routes: Routes = [

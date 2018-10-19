@@ -9,10 +9,7 @@ describe('AchievementsService', () => {
     })
   })
 
-  it(
-    'should be created',
-    inject([AchievementsService], (service: AchievementsService) => {
-      expect(service).toBeTruthy()
-    })
-  )
+  it('should be created', inject([AchievementsService], (service: AchievementsService) => {
+    expect(service).toBeTruthy()
+  }))
 })
