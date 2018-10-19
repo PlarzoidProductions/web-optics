@@ -1,6 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
-
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 

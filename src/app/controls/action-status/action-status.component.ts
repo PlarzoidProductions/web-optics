@@ -1,5 +1,4 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core'
-
 import { Observable, Subscription } from 'rxjs'
 
 export class ActionStatus {

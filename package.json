@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 5001 --host 0.0.0.0",
-    "standardize": "prettier **/*.ts --write",
+    "standardize": "import-sort --write **/*.ts && prettier **/*.ts --write",
     "build": "npm run standardize && ng build",
     "build:prod": "ng build --prod",
     "test": "ng test --browsers Chrome --watch",
@@ -43,6 +43,12 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "^6.0.106",
     "codelyzer": "^4.5.0",
+    "import-sort": "^5.2.0",
+    "import-sort-cli": "^5.2.0",
+    "import-sort-parser-babylon": "^5.2.0",
+    "import-sort-parser-typescript": "^5.0.0",
+    "import-sort-style-eslint": "^5.0.0",
+    "import-sort-style-module": "^5.0.0",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "^2.0.2",
@@ -62,5 +68,15 @@
     "singleQuote": true,
     "trailingComma": "es5",
     "parser": "typescript"
+  },
+  "importSort": {
+    ".js, .jsx, .es6, .es": {
+      "parser": "babylon",
+      "style": "eslint"
+    },
+    ".ts, .tsx": {
+      "parser": "typescript",
+      "style": "module"
+    }
   }
 }
