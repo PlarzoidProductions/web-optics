@@ -1,11 +1,12 @@
-import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import {
   MatButtonModule,
+  MatFormFieldModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
   MatSidenavModule,
+  MatSlideToggleModule,
   MatToolbarModule,
 } from '@angular/material'
 
@@ -16,11 +17,11 @@ const materialComponents = [
   MatSidenavModule,
   MatToolbarModule,
   MatInputModule,
+  MatFormFieldModule,
+  MatSlideToggleModule,
 ]
 
 @NgModule({
-  imports: [CommonModule, materialComponents],
-  declarations: [],
   exports: [materialComponents],
 })
 export class MaterialComponentsModule {}

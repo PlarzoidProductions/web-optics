@@ -3,6 +3,7 @@
 
 div.form-container {
   width: 60%;
+  margin: 0px 25px;
 }
 
 .pending-message {
